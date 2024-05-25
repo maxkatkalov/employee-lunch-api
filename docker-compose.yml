@@ -1,0 +1,63 @@
+version: '3.3'
+
+services:
+    app:
+        build:
+            context: .
+        ports:
+            - "80:8000"
+        volumes:
+            - .:/app
+        environment:
+            - DATABASE_HOST=db
+        command: >
+            sh -c "./wait-for-it.sh db:5432 --
+                   python manage.py makemigrations && 
+                   python manage.py migrate && 
+                   python manage.py runserver 0.0.0.0:8000"
+
+    db:
+        image: postgres
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: db_name
+
+    redis:
+        image: "redis:alpine"
+
+    celery_worker:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        command: "celery -A employee_lunch_api worker --loglevel=info"
+        volumes:
+            - .:/app
+        env_file:
+            - .env
+        depends_on:
+            - app
+            - redis
+            - db
+        restart: on-failure
+        environment:
+            - CELERY_BROKER_URL=redis://redis:6379/0
+
+    celery_beat:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        command: "celery -A employee_lunch_api beat --loglevel=info"
+        volumes:
+            - .:/app
+        env_file:
+            - .env
+        restart: on-failure
+        depends_on:
+            - app
+            - redis
+            - db
+        environment:
+            - CELERY_BROKER_URL=redis://redis:6379/0
