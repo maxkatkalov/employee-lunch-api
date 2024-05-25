@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "restaurant_service.apps.RestaurantServiceConfig",
     "user_service.apps.UserServiceConfig",
+    "polling_service.apps.PollingServiceConfig",
 ]
 
 MIDDLEWARE = [
