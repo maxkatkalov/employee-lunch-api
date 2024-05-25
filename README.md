@@ -67,7 +67,7 @@ These instructions will help you get a copy of the project up and running on you
   - live demo running in DEBUG mode, so you can use Django Debug Toolbar to explore the API;
   - demo has preinstalled dummy data.
 
-- For [login](https://care-express-api.techone.pp.ua/api/station-user/token/login/) (admin with prepared order data), you can use the following credits:
+- For [login]([https://care-express-api.techone.pp.ua/api/station-user/token/login/](https://employee-lunch-api.max-katkalov.pp.ua/api/user-area/token/login/)) (admin with prepared order data), you can use the following credits:
 
    **Logins:** 
      - admin@gmail.com (superuser);
