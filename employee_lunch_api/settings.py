@@ -134,3 +134,14 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "ROTATE_REFRESH_TOKENS": False,
 }
+CELERY_TIMEZONE = "EET"
+CELERY_BROKER_URL = (
+    "redis://redis:6379/0"  # Update to use the service name 'redis'
+)
+CELERY_RESULT_BACKEND = "redis://redis:6379/0"
+CELERY_BEAT_SCHEDULE = {
+    "close_and_open_poll": {
+        "task": "polling_service.tasks.close_and_open_poll",
+        "schedule": crontab(minute=0, hour=0),
+    },
+}
