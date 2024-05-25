@@ -4,7 +4,7 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 from polling_service.models import Poll, Vote
-from nested import MenuSerializer
+from .nested import MenuSerializer
 from restaurant_service.models import Menu
 
 

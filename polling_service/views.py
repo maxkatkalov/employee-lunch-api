@@ -9,7 +9,7 @@ from django.utils import timezone
 from rest_framework.response import Response
 
 from .models import Poll, Vote
-from serializers.common import (
+from .serializers.common import (
     PollSerializer,
     PollDetailSerializer,
     VoteSerializer,
