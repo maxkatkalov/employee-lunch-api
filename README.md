@@ -8,7 +8,7 @@ Internal service for its company employees which helps them to  make a decision 
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [API online access](#live-demo)
-- [DB scheme](#https://monosnap.com/file/6lszCRY8VrNOfcQJrYoN6ilgytsHmi)
+- [DB scheme](https://monosnap.com/file/6lszCRY8VrNOfcQJrYoN6ilgytsHmi)
 - [User permissions](#user-permissions)
 
 ## Getting Started
